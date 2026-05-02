@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, GitBranch, Calendar, User, Code2 } from 'lucide-react';
+import { ArrowLeft, ExternalLink, GitBranch, Calendar, User, Code2, Moon, Sun, Languages } from 'lucide-react';
 import { projectsData } from '../data/projects';
 
 export default function ProjectDetail({ isDark, toggleTheme, lang, toggleLang }) {
@@ -41,19 +41,20 @@ export default function ProjectDetail({ isDark, toggleTheme, lang, toggleLang })
             <ArrowLeft size={16} />
             {t.back[lang]}
           </Link>
-          <div className="text-sm font-bold truncate px-4">{project.title[lang]}</div>
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
             <button 
               onClick={toggleLang}
-              className="px-3 py-1 text-xs font-bold rounded-full bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-white transition-colors cursor-pointer"
+              className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-800 rounded-full py-2 px-4 cursor-pointer"
             >
-              {lang === 'en' ? 'EN' : 'ID'}
+              <Languages size={16} />
+              <span>{lang === 'en' ? 'ID' : 'EN'}</span>
             </button>
             <button 
               onClick={toggleTheme}
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-slate-800 text-[var(--fg-muted)] hover:text-[var(--fg)] transition-colors cursor-pointer"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-800 rounded-full p-2 cursor-pointer"
+              aria-label="Toggle theme"
             >
-              {isDark ? '☀️' : '🌙'}
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
           </div>
         </div>
