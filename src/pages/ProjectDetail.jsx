@@ -19,7 +19,7 @@ export default function ProjectDetail({ isDark, toggleTheme, lang, toggleLang })
   }
 
   const t = {
-    back: { en: 'Back to Projects', id: 'Kembali ke Proyek' },
+    back: { en: 'Back', id: 'Kembali' },
     visit: { en: 'Visit Live Site', id: 'Kunjungi Situs Live' },
     source: { en: 'Source Code', id: 'Kode Sumber' },
     mockup: { en: 'Screenshot Mockup', id: 'Mockup Tangkapan Layar' },
