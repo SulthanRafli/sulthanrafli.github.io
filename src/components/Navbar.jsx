@@ -94,7 +94,7 @@ export default function Navbar({ isDark, toggleTheme, lang, toggleLang }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 right-0 mt-4 glass-panel rounded-2xl p-4 flex flex-col gap-2 shadow-xl md:hidden"
+            className="absolute top-full left-0 right-0 mt-4 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-4 flex flex-col gap-2 shadow-xl md:hidden"
           >
             {navItems.map((item) => (
               <a 
