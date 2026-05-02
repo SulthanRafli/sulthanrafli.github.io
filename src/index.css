@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-primary: #f43f5e;
+  --color-primary-dark: #e11d48;
+  --color-background: #ffffff;
+  --color-background-dark: #0f172a;
+  --color-surface: #f9fafb;
+  --color-surface-dark: #1e293b;
+  --color-text: #1f2937;
+  --color-text-dark: #f8fafc;
+  --color-text-muted: #6b7280;
+  --color-text-muted-dark: #94a3b8;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  :root {
+    --bg: var(--color-background);
+    --fg: var(--color-text);
+    --fg-muted: var(--color-text-muted);
+    --surface: var(--color-surface);
+  }
+
+  html.dark {
+    --bg: var(--color-background-dark);
+    --fg: var(--color-text-dark);
+    --fg-muted: var(--color-text-muted-dark);
+    --surface: var(--color-surface-dark);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  * {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+}
+
+@layer utilities {
+  /* Dot background pattern */
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  html.dark .bg-dot-pattern,
+  .dark .bg-dot-pattern {
+    background-image: radial-gradient(circle, #334155 1px, transparent 1px);
+  }
+
+  /* Glassmorphism panel */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  html.dark .glass-panel,
+  .dark .glass-panel {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Muted text utility */
+  .text-muted {
+    color: var(--fg-muted);
+  }
+
+  /* Card shine effect on hover */
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-20deg);
+    transition: all 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  html.dark .shine-effect::before,
+  .dark .shine-effect::before {
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  .shine-effect:hover::before {
+    left: 150%;
+  }
+}
