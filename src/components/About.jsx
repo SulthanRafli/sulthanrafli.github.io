@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Server, Layout, Database, Box, Cpu } from 'lucide-react';
+import { Code2, Server, Layout, Database, Box, Cpu, Sparkles } from 'lucide-react';
 
 export default function About({ lang }) {
   const t = {
@@ -29,11 +29,19 @@ export default function About({ lang }) {
           en: 'Managing reliable data storage and containerized deployments with Docker and Redis.', 
           id: 'Mengelola penyimpanan data yang andal dan deployment container dengan Docker dan Redis.' 
         }
+      },
+      {
+        title: { en: 'AI Native Engineer', id: 'AI Native Engineer' },
+        icon: <Sparkles className="text-amber-500 mb-4" size={32} />,
+        desc: { 
+          en: 'Leveraging AI tools to accelerate development, automate repetitive tasks, and boost overall productivity.',
+          id: 'Memanfaatkan tools AI untuk mempercepat pengembangan, mengotomasi tugas repetitif, dan meningkatkan produktivitas secara keseluruhan.'
+        }
       }
     ],
     techDesc: {
-      en: 'I specialize in full-stack web development and system integration, utilizing various tools to build scalable healthcare solutions. Here are the technologies I frequently use:',
-      id: 'Saya memiliki spesialisasi dalam pengembangan full-stack dan integrasi sistem, menggunakan berbagai alat untuk membangun solusi kesehatan yang tangguh. Berikut adalah teknologi yang sering saya gunakan:'
+      en: 'I specialize in full-stack web development and system integration. As an AI Native Engineer, I leverage AI-powered tools to maximize productivity and deliver high-quality solutions faster. Here are the technologies I frequently use:',
+      id: 'Saya memiliki spesialisasi dalam pengembangan full-stack dan integrasi sistem. Sebagai AI Native Engineer, saya memanfaatkan tools berbasis AI untuk memaksimalkan produktivitas dan menghasilkan solusi berkualitas tinggi dengan lebih cepat. Berikut adalah teknologi yang sering saya gunakan:'
     }
   };
 
@@ -71,7 +79,7 @@ export default function About({ lang }) {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {t.cards.map((card, index) => (
           <motion.div
             key={index}

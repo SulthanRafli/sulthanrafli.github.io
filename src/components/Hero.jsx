@@ -35,6 +35,8 @@ export default function Hero({ lang }) {
             sequence={[
               'Full Stack Developer',
               2000,
+              'AI Native Engineer',
+              2000,
               'Problem Solver',
               2000,
               'System Integrator',
