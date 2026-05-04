@@ -82,18 +82,18 @@ export default function Projects({ lang }) {
                   {!project.isInternal && (
                     <div className="flex gap-3 z-10 relative">
                       {project.link && project.link !== '#' && (
-                        <a href={project.link} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-[var(--fg-muted)] hover:text-rose-500 transition-colors">
+                        <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(project.link, '_blank', 'noopener,noreferrer'); }} className="text-[var(--fg-muted)] hover:text-rose-500 transition-colors cursor-pointer">
                           <ExternalLink size={20} />
-                        </a>
+                        </button>
                       )}
                     </div>
                   )}
                   {project.isInternal && (
                     <div className="flex items-center gap-3 text-[var(--fg-muted)] group-hover:text-rose-500 transition-colors z-10 relative">
                       {project.github && project.github !== '#' && (
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="hover:text-[var(--fg)] transition-colors text-[var(--fg-muted)]">
+                        <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(project.github, '_blank', 'noopener,noreferrer'); }} className="hover:text-[var(--fg)] transition-colors text-[var(--fg-muted)] cursor-pointer">
                           <GitBranch size={20} />
-                        </a>
+                        </button>
                       )}
                       <ArrowRight size={20} className="group-hover:-rotate-45 transition-transform" />
                     </div>
