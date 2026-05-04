@@ -100,31 +100,85 @@ export default function ProjectDetail({ isDark, toggleTheme, lang, toggleLang })
             transition={{ delay: 0.3 }}
             className="flex flex-wrap gap-4"
           >
-            <a href={project.link} className="px-6 py-3 rounded-xl bg-rose-500 text-white font-medium hover:bg-rose-600 transition-colors flex items-center gap-2 shine-effect">
-              {t.visit[lang]}
-              <ExternalLink size={18} />
-            </a>
-            <a href={project.github} className="px-6 py-3 rounded-xl glass-panel font-medium transition-colors flex items-center gap-2 hover:opacity-80">
-              {t.source[lang]}
-              <GitBranch size={18} />
-            </a>
+            {!project.isInternal && project.link && project.link !== '#' && (
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-xl bg-rose-500 text-white font-medium hover:bg-rose-600 transition-colors flex items-center gap-2 shine-effect">
+                {t.visit[lang]}
+                <ExternalLink size={18} />
+              </a>
+            )}
+            {project.isInternal && project.github && project.github !== '#' && (
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-xl glass-panel font-medium transition-colors flex items-center gap-2 hover:opacity-80">
+                {t.source[lang]}
+                <GitBranch size={18} />
+              </a>
+            )}
           </motion.div>
         </div>
 
-        {/* Feature Image Placeholder */}
+        {/* Dynamic Abstract Project Cover */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="w-full aspect-[21/9] md:aspect-[21/7] rounded-3xl overflow-hidden mb-20 bg-gradient-to-tr from-rose-500/20 to-pink-500/20 border border-gray-200 dark:border-slate-700 flex items-center justify-center relative"
+          className="w-full aspect-[21/9] md:aspect-[21/7] rounded-3xl overflow-hidden mb-20 relative group bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-800"
         >
-           <div className="absolute inset-0 bg-dot-pattern opacity-50"></div>
-           <div className="glass-panel px-8 py-4 rounded-2xl flex items-center gap-3 z-10">
-              <div className="w-3 h-3 rounded-full bg-red-500"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              <span className="ml-4 text-sm font-medium text-[var(--fg-muted)]">{t.mockup[lang]}</span>
-           </div>
+          {/* Animated Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 via-indigo-500/5 to-pink-500/10"></div>
+          
+          {/* Animated Blobs */}
+          <motion.div 
+            animate={{ 
+              x: [0, 50, 0], 
+              y: [0, -30, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            className="absolute top-0 left-1/4 w-96 h-96 bg-rose-400/20 dark:bg-rose-500/10 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70"
+          ></motion.div>
+          
+          <motion.div 
+            animate={{ 
+              x: [0, -50, 0], 
+              y: [0, 40, 0],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-400/20 dark:bg-indigo-500/10 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70"
+          ></motion.div>
+
+          <div className="absolute inset-0 bg-dot-pattern opacity-30 dark:opacity-10"></div>
+
+          {/* Large Watermark Title */}
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
+            <h2 className="text-[8vw] md:text-[6vw] font-black text-[var(--fg)] opacity-5 whitespace-nowrap">
+              {project.title[lang].toUpperCase()}
+            </h2>
+          </div>
+
+          {/* Center Glass Panel */}
+          <div className="absolute inset-0 flex items-center justify-center z-10 p-6">
+            <motion.div 
+              whileHover={{ scale: 1.02 }}
+              className="glass-panel w-full max-w-xl px-6 md:px-10 py-8 rounded-3xl flex flex-col items-center gap-6 border border-white/40 dark:border-slate-700/50 shadow-2xl backdrop-blur-md bg-white/40 dark:bg-slate-900/40 transition-transform"
+            >
+              <div className="flex items-center gap-3 w-full border-b border-gray-300/50 dark:border-slate-600/50 pb-4">
+                <div className="w-3.5 h-3.5 rounded-full bg-rose-500 shadow-[0_0_10px_rgba(244,63,94,0.5)]"></div>
+                <div className="w-3.5 h-3.5 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]"></div>
+                <div className="w-3.5 h-3.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+              </div>
+              <div className="text-center w-full">
+                <p className="text-xs md:text-sm font-bold tracking-widest text-rose-500 uppercase mb-2">System Architecture</p>
+                <h3 className="text-xl md:text-3xl font-bold text-[var(--fg)] mb-6">{project.title[lang]}</h3>
+                <div className="flex flex-wrap justify-center gap-2 w-full">
+                  {project.techStack.map((tech, i) => (
+                    <span key={i} className="px-3 py-1.5 bg-white/60 dark:bg-slate-800/60 rounded-lg text-xs md:text-sm font-medium text-[var(--fg)] border border-gray-200/50 dark:border-slate-700/50 shadow-sm">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Two Column Layout */}
@@ -162,7 +216,7 @@ export default function ProjectDetail({ isDark, toggleTheme, lang, toggleLang })
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {project.features && project.features[lang] && project.features[lang].map((feature, i) => (
                   <div key={i} className="glass-panel p-6 rounded-2xl flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-rose-500/10 flex items-center justify-center shrink-0 mt-1">
+                    <div className="w-8 h-8 rounded-full bg-rose-500/10 flex items-center justify-center shrink-0">
                       <div className="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
                     </div>
                     <span className="font-medium">{feature}</span>

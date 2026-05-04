@@ -1,13 +1,40 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, GitBranch, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, GitBranch, ArrowRight, Calendar, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projectsData } from '../data/projects';
 
 export default function Projects({ lang }) {
+  const [visibleCount, setVisibleCount] = useState(4);
+
   const t = {
-    title: { en: 'Featured Projects', id: 'Proyek Unggulan' }
+    title: { en: 'Featured Projects', id: 'Proyek Unggulan' },
+    loadMore: { en: 'Load More', id: 'Tampilkan Lebih Banyak' }
   };
+
+  const getYear = (project) => {
+    const timeline = project.timeline?.en || '';
+    if (timeline.includes('Present') || timeline.includes('On Progress')) return 2026;
+    const match = timeline.match(/(\d{4})/);
+    if (match) return parseInt(match[1], 10);
+    if (project.id === 'pupr-doc-sign') return 2023;
+    if (project.id === 'calma-stories') return 2023;
+    return 2022;
+  };
+
+  const displayYear = (project) => {
+    const timeline = project.timeline?.en || '';
+    if (timeline.includes('Present')) return 'Present';
+    if (timeline.includes('On Progress')) return 'On Progress';
+    const match = timeline.match(/(\d{4})/);
+    if (match) return match[1];
+    if (project.id === 'pupr-doc-sign') return '2023';
+    if (project.id === 'calma-stories') return '2023';
+    return '2022';
+  };
+
+  const sortedProjects = [...projectsData].sort((a, b) => getYear(b) - getYear(a));
+  const visibleProjects = sortedProjects.slice(0, visibleCount);
 
   return (
     <section id="projects" className="py-24 px-6 max-w-6xl mx-auto">
@@ -29,32 +56,45 @@ export default function Projects({ lang }) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {projectsData.map((project, index) => {
+        <AnimatePresence mode="popLayout">
+        {visibleProjects.map((project, index) => {
           const content = (
             <motion.div
+              layout
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
               className="group glass-panel rounded-3xl overflow-hidden flex flex-col shine-effect h-full"
             >
               <div className="p-8 flex-1">
                 <div className="flex justify-between items-start mb-6">
-                  <span className="inline-block px-4 py-1.5 bg-gray-100 dark:bg-slate-800 rounded-full text-xs font-semibold text-[var(--fg-muted)]">
-                    {project.type[lang]}
-                  </span>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="inline-block px-4 py-1.5 bg-gray-100 dark:bg-slate-800 rounded-full text-xs font-semibold text-[var(--fg-muted)]">
+                      {project.type[lang]}
+                    </span>
+                    <span className="inline-block px-3 py-1.5 bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 rounded-full text-xs font-semibold flex items-center gap-1">
+                      {displayYear(project) === 'Present' ? (lang === 'id' ? 'Sekarang' : 'Present') : 
+                       displayYear(project) === 'On Progress' ? (lang === 'id' ? 'Berjalan' : 'On Progress') : 
+                       displayYear(project)}
+                    </span>
+                  </div>
                   {!project.isInternal && (
-                    <div className="flex gap-3">
-                      <a href={project.github} className="text-[var(--fg-muted)] hover:text-[var(--fg)] transition-colors">
-                        <GitBranch size={20} />
-                      </a>
-                      <a href={project.link} className="text-[var(--fg-muted)] hover:text-rose-500 transition-colors">
-                        <ExternalLink size={20} />
-                      </a>
+                    <div className="flex gap-3 z-10 relative">
+                      {project.link && project.link !== '#' && (
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-[var(--fg-muted)] hover:text-rose-500 transition-colors">
+                          <ExternalLink size={20} />
+                        </a>
+                      )}
                     </div>
                   )}
                   {project.isInternal && (
-                    <div className="text-[var(--fg-muted)] group-hover:text-rose-500 transition-colors">
+                    <div className="flex items-center gap-3 text-[var(--fg-muted)] group-hover:text-rose-500 transition-colors z-10 relative">
+                      {project.github && project.github !== '#' && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="hover:text-[var(--fg)] transition-colors text-[var(--fg-muted)]">
+                          <GitBranch size={20} />
+                        </a>
+                      )}
                       <ArrowRight size={20} className="group-hover:-rotate-45 transition-transform" />
                     </div>
                   )}
@@ -77,15 +117,26 @@ export default function Projects({ lang }) {
             </motion.div>
           );
 
-          return project.isInternal ? (
+          return (
             <Link to={`/project/${project.id}`} key={project.id} className="block h-full">
               {content}
             </Link>
-          ) : (
-            <div key={project.id} className="h-full">{content}</div>
           );
         })}
+        </AnimatePresence>
       </div>
+
+      {visibleCount < sortedProjects.length && (
+        <div className="mt-12 flex justify-center">
+          <button 
+            onClick={() => setVisibleCount(prev => prev + 4)}
+            className="px-8 py-3 rounded-xl bg-rose-500 text-white font-medium hover:bg-rose-600 transition-all active:scale-95 cursor-pointer flex items-center gap-2 shine-effect group"
+          >
+            {t.loadMore[lang]}
+            <ChevronDown size={18} className="group-hover:translate-y-1 transition-transform" />
+          </button>
+        </div>
+      )}
     </section>
   );
 }

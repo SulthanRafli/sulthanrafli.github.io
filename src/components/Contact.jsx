@@ -170,7 +170,7 @@ export default function Contact({ lang }) {
                   value={formData.from_name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all text-[var(--fg)]"
+                  className="mt-4 w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all text-[var(--fg)]"
                   placeholder={t.placeholders.name[lang]}
                 />
               </div>
@@ -182,7 +182,7 @@ export default function Contact({ lang }) {
                   value={formData.from_email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all text-[var(--fg)]"
+                  className="mt-4 w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all text-[var(--fg)]"
                   placeholder="example@example.com"
                 />
               </div>
@@ -195,7 +195,7 @@ export default function Contact({ lang }) {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all text-[var(--fg)]"
+                className="mt-4 w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all text-[var(--fg)]"
                 placeholder={t.placeholders.subject[lang]}
               />
             </div>
@@ -207,7 +207,7 @@ export default function Contact({ lang }) {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all resize-none text-[var(--fg)]"
+                className="mt-4 w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all resize-none text-[var(--fg)]"
                 placeholder={t.placeholders.message[lang]}
               ></textarea>
             </div>
