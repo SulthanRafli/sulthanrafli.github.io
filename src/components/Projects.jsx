@@ -16,9 +16,7 @@ export default function Projects({ lang }) {
     const timeline = project.timeline?.en || '';
     if (timeline.includes('Present') || timeline.includes('On Progress')) return 2026;
     const match = timeline.match(/(\d{4})/);
-    if (match) return parseInt(match[1], 10);
-    if (project.id === 'pupr-doc-sign') return 2023;
-    if (project.id === 'calma-stories') return 2023;
+    if (match) return parseInt(match[1], 10);    
     return 2022;
   };
 
@@ -27,9 +25,7 @@ export default function Projects({ lang }) {
     if (timeline.includes('Present')) return 'Present';
     if (timeline.includes('On Progress')) return 'On Progress';
     const match = timeline.match(/(\d{4})/);
-    if (match) return match[1];
-    if (project.id === 'pupr-doc-sign') return '2023';
-    if (project.id === 'calma-stories') return '2023';
+    if (match) return match[1];    
     return '2022';
   };
 
