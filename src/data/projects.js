@@ -441,74 +441,74 @@ export const projectsData = [
     },
     tags: ['Next.js', 'Strapi']
   },
-  {
-    id: 'periksa-id',
-    title: { en: 'Periksa.id', id: 'Periksa.id (SIMRS)' },
-    subtitle: { en: 'Comprehensive hospital and healthcare management system.', id: 'Sistem manajemen rumah sakit dan layanan kesehatan komprehensif.' },
-    type: { en: 'Enterprise System', id: 'Sistem Enterprise' },
-    status: { en: 'Production', id: 'Produksi' },
-    timeline: { en: '2019 - Present', id: '2019 - Sekarang' },
-    role: { en: 'Senior Full Stack Developer', id: 'Senior Full Stack Developer' },
-    techStack: ['Golang', 'Angular', 'Node.js', 'Elasticsearch', 'Redis', 'RabbitMQ', 'Docker'],
-    link: 'https://klinik.periksa.tech/',
-    github: '#',
-    overview: { 
-      en: 'An enterprise-grade Hospital Management System (SIMRS) handling diverse modules including Financial, Logistics, Cashier, Nutrition, and dynamic forms. The platform is highly scalable and integrated with national healthcare standards such as BPJS (VClaim, Mobile JKN, I-Care) and SATUSEHAT interoperability.', 
-      id: 'Sistem Manajemen Rumah Sakit (SIMRS) skala enterprise yang menangani berbagai modul termasuk Keuangan, Logistik, Kasir, Gizi, dan formulir dinamis. Platform ini sangat scalable dan terintegrasi dengan standar layanan kesehatan nasional seperti BPJS (VClaim, Mobile JKN, I-Care) dan interoperabilitas SATUSEHAT.' 
-    },
-    challenge: { 
-      en: 'Migrating legacy monolithic architectures (CodeIgniter 3 to Angular, Express.js to Golang microservices) while ensuring 98-99% uptime for critical BPJS integration services and maintaining ISO 27001 compliance standards.', 
-      id: 'Memigrasikan arsitektur monolitik lama (CodeIgniter 3 ke Angular, Express.js ke microservices Golang) sembari memastikan uptime 98-99% untuk layanan integrasi BPJS yang krusial dan mempertahankan standar kepatuhan ISO 27001.' 
-    },
-    solution: { 
-      en: 'Architected and deployed a highly scalable ecosystem of 10+ Golang microservices utilizing Docker, Redis, and RabbitMQ. Established robust CI/CD pipelines via GitHub Actions and mentored the engineering team to ensure high-quality, secure software delivery.', 
-      id: 'Merancang dan menerapkan ekosistem yang sangat scalable yang terdiri dari 10+ microservices Golang dengan memanfaatkan Docker, Redis, dan RabbitMQ. Membangun pipeline CI/CD yang kuat melalui GitHub Actions dan membimbing tim engineering untuk memastikan pengiriman perangkat lunak yang berkualitas tinggi dan aman.' 
-    },
-    features: {
-      en: ['Golang Microservices', 'BPJS & SATUSEHAT Integration', 'Complex Hospital Modules', 'High Availability (99% Uptime)'],
-      id: ['Microservices Golang', 'Integrasi BPJS & SATUSEHAT', 'Modul Rumah Sakit Kompleks', 'Ketersediaan Tinggi (Uptime 99%)']
-    },
-    isInternal: false,
-    cardDesc: { 
-      en: 'Enterprise hospital management system with Golang microservices and national healthcare integrations.', 
-      id: 'Sistem manajemen rumah sakit enterprise dengan microservices Golang dan integrasi layanan kesehatan nasional.' 
-    },
-    tags: ['Golang', 'Angular', 'Microservices']
-  },
-  {
-    id: 'mobile-periksa-id',
-    title: { en: 'Mobile Periksa.id', id: 'Mobile Periksa.id' },
-    subtitle: { en: 'Mobile application extension for the Periksa.id hospital management system.', id: 'Ekstensi aplikasi seluler untuk sistem manajemen rumah sakit Periksa.id.' },
-    type: { en: 'Mobile App', id: 'Aplikasi Mobile' },
-    status: { en: 'Production', id: 'Produksi' },
-    timeline: { en: '2019 - Present', id: '2019 - Sekarang' },
-    role: { en: 'Full Stack Developer', id: 'Full Stack Developer' },
-    techStack: ['Ionic', 'Angular', 'Golang', 'Node.js'],
-    link: 'https://mobileperiksa.id/',
-    github: '#',
-    overview: { 
-      en: 'The official mobile application for the Periksa.id ecosystem. It extends the core Hospital Management System accessibility directly to mobile platforms, allowing doctors, nurses, and hospital staff to manage patients, access medical records, and perform critical administrative tasks on the go.', 
-      id: 'Aplikasi seluler resmi untuk ekosistem Periksa.id. Aplikasi ini memperluas aksesibilitas Sistem Manajemen Rumah Sakit inti langsung ke platform seluler, memungkinkan dokter, perawat, dan staf rumah sakit untuk mengelola pasien, mengakses rekam medis, dan melakukan tugas administratif penting saat bepergian.' 
-    },
-    challenge: { 
-      en: 'Translating complex, data-heavy enterprise hospital workflows into an intuitive and responsive mobile interface while ensuring seamless, secure synchronization with the backend microservices.', 
-      id: 'Menerjemahkan alur kerja rumah sakit enterprise yang kompleks dan padat data ke dalam antarmuka seluler yang intuitif dan responsif sambil memastikan sinkronisasi yang mulus dan aman dengan microservices backend.' 
-    },
-    solution: { 
-      en: 'Utilized the Ionic framework to build a highly performant, cross-platform mobile application. Integrated robust APIs connected to the Golang and Node.js backend to ensure real-time data updates and high reliability for medical professionals.', 
-      id: 'Memanfaatkan framework Ionic untuk membangun aplikasi seluler lintas platform yang berkinerja tinggi. Mengintegrasikan API tangguh yang terhubung ke backend Golang dan Node.js untuk memastikan pembaruan data real-time dan keandalan tinggi bagi para profesional medis.' 
-    },
-    features: {
-      en: ['Cross-Platform Compatibility', 'Real-time Medical Records', 'Mobile Task Management', 'Secure API Integration'],
-      id: ['Kompatibilitas Lintas Platform', 'Rekam Medis Real-time', 'Manajemen Tugas Seluler', 'Integrasi API Aman']
-    },
-    isInternal: false,
-    cardDesc: { 
-      en: 'Cross-platform mobile application extending the Periksa.id hospital management system, built with Ionic.', 
-      id: 'Aplikasi seluler lintas platform yang merupakan ekstensi dari sistem manajemen rumah sakit Periksa.id, dibangun dengan Ionic.' 
-    },
-    tags: ['Ionic', 'Angular', 'Mobile']
-  },
+  // {
+  //   id: 'periksa-id',
+  //   title: { en: 'Periksa.id', id: 'Periksa.id (SIMRS)' },
+  //   subtitle: { en: 'Comprehensive hospital and healthcare management system.', id: 'Sistem manajemen rumah sakit dan layanan kesehatan komprehensif.' },
+  //   type: { en: 'Enterprise System', id: 'Sistem Enterprise' },
+  //   status: { en: 'Production', id: 'Produksi' },
+  //   timeline: { en: '2019 - Present', id: '2019 - Sekarang' },
+  //   role: { en: 'Senior Full Stack Developer', id: 'Senior Full Stack Developer' },
+  //   techStack: ['Golang', 'Angular', 'Node.js', 'Elasticsearch', 'Redis', 'RabbitMQ', 'Docker'],
+  //   link: 'https://klinik.periksa.tech/',
+  //   github: '#',
+  //   overview: { 
+  //     en: 'An enterprise-grade Hospital Management System (SIMRS) handling diverse modules including Financial, Logistics, Cashier, Nutrition, and dynamic forms. The platform is highly scalable and integrated with national healthcare standards such as BPJS (VClaim, Mobile JKN, I-Care) and SATUSEHAT interoperability.', 
+  //     id: 'Sistem Manajemen Rumah Sakit (SIMRS) skala enterprise yang menangani berbagai modul termasuk Keuangan, Logistik, Kasir, Gizi, dan formulir dinamis. Platform ini sangat scalable dan terintegrasi dengan standar layanan kesehatan nasional seperti BPJS (VClaim, Mobile JKN, I-Care) dan interoperabilitas SATUSEHAT.' 
+  //   },
+  //   challenge: { 
+  //     en: 'Migrating legacy monolithic architectures (CodeIgniter 3 to Angular, Express.js to Golang microservices) while ensuring 98-99% uptime for critical BPJS integration services and maintaining ISO 27001 compliance standards.', 
+  //     id: 'Memigrasikan arsitektur monolitik lama (CodeIgniter 3 ke Angular, Express.js ke microservices Golang) sembari memastikan uptime 98-99% untuk layanan integrasi BPJS yang krusial dan mempertahankan standar kepatuhan ISO 27001.' 
+  //   },
+  //   solution: { 
+  //     en: 'Architected and deployed a highly scalable ecosystem of 10+ Golang microservices utilizing Docker, Redis, and RabbitMQ. Established robust CI/CD pipelines via GitHub Actions and mentored the engineering team to ensure high-quality, secure software delivery.', 
+  //     id: 'Merancang dan menerapkan ekosistem yang sangat scalable yang terdiri dari 10+ microservices Golang dengan memanfaatkan Docker, Redis, dan RabbitMQ. Membangun pipeline CI/CD yang kuat melalui GitHub Actions dan membimbing tim engineering untuk memastikan pengiriman perangkat lunak yang berkualitas tinggi dan aman.' 
+  //   },
+  //   features: {
+  //     en: ['Golang Microservices', 'BPJS & SATUSEHAT Integration', 'Complex Hospital Modules', 'High Availability (99% Uptime)'],
+  //     id: ['Microservices Golang', 'Integrasi BPJS & SATUSEHAT', 'Modul Rumah Sakit Kompleks', 'Ketersediaan Tinggi (Uptime 99%)']
+  //   },
+  //   isInternal: false,
+  //   cardDesc: { 
+  //     en: 'Enterprise hospital management system with Golang microservices and national healthcare integrations.', 
+  //     id: 'Sistem manajemen rumah sakit enterprise dengan microservices Golang dan integrasi layanan kesehatan nasional.' 
+  //   },
+  //   tags: ['Golang', 'Angular', 'Microservices']
+  // },
+  // {
+  //   id: 'mobile-periksa-id',
+  //   title: { en: 'Mobile Periksa.id', id: 'Mobile Periksa.id' },
+  //   subtitle: { en: 'Mobile application extension for the Periksa.id hospital management system.', id: 'Ekstensi aplikasi seluler untuk sistem manajemen rumah sakit Periksa.id.' },
+  //   type: { en: 'Mobile App', id: 'Aplikasi Mobile' },
+  //   status: { en: 'Production', id: 'Produksi' },
+  //   timeline: { en: '2019 - Present', id: '2019 - Sekarang' },
+  //   role: { en: 'Full Stack Developer', id: 'Full Stack Developer' },
+  //   techStack: ['Ionic', 'Angular', 'Golang', 'Node.js'],
+  //   link: 'https://mobileperiksa.id/',
+  //   github: '#',
+  //   overview: { 
+  //     en: 'The official mobile application for the Periksa.id ecosystem. It extends the core Hospital Management System accessibility directly to mobile platforms, allowing doctors, nurses, and hospital staff to manage patients, access medical records, and perform critical administrative tasks on the go.', 
+  //     id: 'Aplikasi seluler resmi untuk ekosistem Periksa.id. Aplikasi ini memperluas aksesibilitas Sistem Manajemen Rumah Sakit inti langsung ke platform seluler, memungkinkan dokter, perawat, dan staf rumah sakit untuk mengelola pasien, mengakses rekam medis, dan melakukan tugas administratif penting saat bepergian.' 
+  //   },
+  //   challenge: { 
+  //     en: 'Translating complex, data-heavy enterprise hospital workflows into an intuitive and responsive mobile interface while ensuring seamless, secure synchronization with the backend microservices.', 
+  //     id: 'Menerjemahkan alur kerja rumah sakit enterprise yang kompleks dan padat data ke dalam antarmuka seluler yang intuitif dan responsif sambil memastikan sinkronisasi yang mulus dan aman dengan microservices backend.' 
+  //   },
+  //   solution: { 
+  //     en: 'Utilized the Ionic framework to build a highly performant, cross-platform mobile application. Integrated robust APIs connected to the Golang and Node.js backend to ensure real-time data updates and high reliability for medical professionals.', 
+  //     id: 'Memanfaatkan framework Ionic untuk membangun aplikasi seluler lintas platform yang berkinerja tinggi. Mengintegrasikan API tangguh yang terhubung ke backend Golang dan Node.js untuk memastikan pembaruan data real-time dan keandalan tinggi bagi para profesional medis.' 
+  //   },
+  //   features: {
+  //     en: ['Cross-Platform Compatibility', 'Real-time Medical Records', 'Mobile Task Management', 'Secure API Integration'],
+  //     id: ['Kompatibilitas Lintas Platform', 'Rekam Medis Real-time', 'Manajemen Tugas Seluler', 'Integrasi API Aman']
+  //   },
+  //   isInternal: false,
+  //   cardDesc: { 
+  //     en: 'Cross-platform mobile application extending the Periksa.id hospital management system, built with Ionic.', 
+  //     id: 'Aplikasi seluler lintas platform yang merupakan ekstensi dari sistem manajemen rumah sakit Periksa.id, dibangun dengan Ionic.' 
+  //   },
+  //   tags: ['Ionic', 'Angular', 'Mobile']
+  // },
   {
     id: 'project-furniture',
     title: { en: 'Project Furniture', id: 'Project Furniture' },
